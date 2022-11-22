@@ -14,16 +14,6 @@ class MainWindow(QMainWindow):
         # Set main background transparent
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
-        # Shadow effect style
-        self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(50)
-        self.shadow.setXOffset(0)
-        self.shadow.setYOffset(0)
-        self.shadow.setColor(QColor(0, 92, 157, 550))
-
-        # apply shadow to central widget
-        self.ui.centralwidget.setGraphicsEffect(self.shadow)
-
         # Set windows title
         self.setWindowTitle('Bisection Function')
 
@@ -48,10 +38,6 @@ class MainWindow(QMainWindow):
         return x * x * x - x * x + 2
 
     def bisection(self, a, b):
-        if self.ui.first_value.text():
-            self.ui.result.setText('Not empty')
-        else:
-            self.ui.result.setText("Empty")
         if self.func(a) * self.func(b) >= 0:
             self.ui.result.setText("You have not assumed a and b")
             return
